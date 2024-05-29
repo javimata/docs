@@ -75,7 +75,7 @@ export default defineDb({
 })
 ```
 
-<ReadMore>Ver la [referencia de configuración de tablas](/en/guides/integrations-guide/db/#table-configuration-reference) para una referencia completa sobre las opciones de tablas.</ReadMore>
+<ReadMore>Ver la [referencia de configuración de tablas](/es/guides/integrations-guide/db/#table-configuration-reference) para una referencia completa sobre las opciones de tablas.</ReadMore>
 
 ### Columnas
 
@@ -100,7 +100,7 @@ const Comment = defineTable({
 });
 ```
 
-<ReadMore>Ver la [tabla de referencia de columnas](/en/guides/integrations-guide/db/#table-configuration-reference) para más detalles.</ReadMore>
+<ReadMore>Ver la [tabla de referencia de columnas](/es/guides/integrations-guide/db/#table-configuration-reference) para más detalles.</ReadMore>
 
 ### Tabla de referencias
 
@@ -161,6 +161,7 @@ import { db } from 'astro:db';
 ```
 
 Astro DB incluye un cliente [ORM Drizzle integrado](https://orm.drizzle.team/). No es necesario configurar ni instalar nada para usarlo. El cliente `db` de Astro DB se configura automáticamente para comunicarse con tu base de datos (local o remota) cuando ejecutas Astro. Utiliza la definición exacta de tu esquema de base de datos para consultas SQL seguras con TypeScript, lo que genera errores si haces referencia a una columna o tabla que no existe.
+
 
 ### Seleccionar
 
@@ -250,6 +251,7 @@ Consulta la [referencia de API de Drizzle `insert()`](https://orm.drizzle.team/d
 Para consultar los resultados de una tabla por una propiedad específica, utiliza [las opciones de Drizzle para selecciones parciales](https://orm.drizzle.team/docs/select#partial-select). Por ejemplo, añade [una llamada `.where()`](https://orm.drizzle.team/docs/select#filtering) a tu consulta `select()` y pasa la comparación que deseas hacer.
 
 El siguiente ejemplo consulta todas las filas de una tabla `Comment` que contienen la frase "Astro DB". Utiliza [el operador `like()`](https://orm.drizzle.team/docs/operators#like) para comprobar si una frase está presente en el `body`:
+
 
 ```astro title="src/pages/index.astro"
 ---
@@ -447,7 +449,6 @@ El siguiente ejemplo renombra una tabla de `Comment` a `Feedback`:
 3. [Envía a Astro Studio](#pushing-table-schemas) con `astro db push --remote`. Esto añadirá la nueva tabla y marcará la antigua como obsoleta.
 4. Actualiza cualquier código de tu proyecto local para usar la nueva tabla en lugar de la antigua. Es posible que necesites migrar datos a la nueva tabla también.
 5. Una vez que estés seguro de que la tabla antigua ya no se usa en tu proyecto, puedes eliminar el esquema de tu `config.ts`:
-
 		```ts title="db/config.ts" del={1-7}
     const Comment = defineTable({
       deprecated: true,
@@ -529,7 +530,6 @@ Las [Integraciones de Astro](/es/reference/integrations-reference/) pueden exten
 
 Usa el método `extendDb()` en el hook `astro:db:setup` para registrar archivos de configuración y semillas de Astro DB adicionales.
 El ayudante `defineDbIntegration()` proporciona soporte de TypeScript y autocompletado para el hook `astro:db:setup`.
-
 
 ```js {8-13}
 // my-integration/index.ts
@@ -622,3 +622,4 @@ Adicionalmente, [enviar cualquier cambio de esquema de tabla](#pushing-table-sch
 :::danger
 Si sobrescribes tu archivo `.db` en el despliegue, perderás tus datos de producción. Sigue el proceso de despliegue para tu host cuidadosamente para evitar la pérdida de datos.
 :::
+
